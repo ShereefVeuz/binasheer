@@ -1122,9 +1122,18 @@ a {
 	}
 	.counter_item span{
 		font-size: 35px;
+		height: auto;
 	}
 	.counter-cont p {
 		font-size: 14px;
+	}
+
+	.nav-tabs {
+		display: flex;
+		flex-wrap: nowrap;
+		width: 100%;
+		overflow: scroll;
+		padding-bottom: 35px;
 	}
 }
 

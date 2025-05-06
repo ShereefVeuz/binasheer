@@ -9,6 +9,9 @@ $('.pfolio .owl-carousel').owlCarousel({
       0: {
         items: 1
       },
+      400: {
+        items: 2
+      },
       780: {
         items: 2
       },
@@ -36,6 +39,9 @@ $('.pfolio .owl-carousel').owlCarousel({
     responsive: {
       0: {
         items: 1
+      },
+      400: {
+        items: 2
       },
       780: {
         items: 2

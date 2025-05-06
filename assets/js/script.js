@@ -70,14 +70,14 @@ $('.pfolio .owl-carousel').owlCarousel({
     0: {
       items: 1
     },
-    400: {
+    350: {
       items: 2
     },
     780: {
-      items: 2
+      items: 3
     },
     900: {
-      items: 2
+      items: 3
     },
     1000: {
       items: 3

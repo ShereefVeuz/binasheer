@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
   <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
 
@@ -27,7 +28,7 @@
         <div class="main-header-in">
 
         <div class="header-img">
-          <img src="assets/img/logo.png" alt="">
+          <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
         </div>
         <div class="menu-outr">
           <div class="menu-button">
@@ -37,18 +38,39 @@
           <!-- Right-side overlay with menu -->
           <div class="menu-overlay">
             <nav class="menu">
-              <a href="#">Home</a>
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">Contact</a>
+              <a href="index.html">Home</a>
+              <a href="about.html">About</a>
+              <div class="menu-dropdown">
+                <a href="#" class="dropdown-toggle">Sectors <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                  <a href="sector-listing.html">Real Estate</a>
+                  <a href="sector-listing.html">Civilco</a>
+                  <a href="sector-listing.html">Industries</a>
+                  <a href="sector-listing.html">Nisco</a>
+                  <a href="sector-listing.html">Energy</a>
+                </div>
+              </div>
+              <div class="menu-dropdown">
+                <a href="#" class="dropdown-toggle">Group of Companies <i class="fa-solid fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                  <a href="group-of-companies.html">Transports</a>
+                  <a href="group-of-companies.html">General Contracting</a>
+                  <a href="group-of-companies.html">Energy</a>
+                  <a href="group-of-companies.html">Industries</a>
+                  <a href="group-of-companies.html">Real Estate</a>
+                  <a href="group-of-companies.html">Civilco</a>
+                  <a href="group-of-companies.html">Nisco</a>
+                </div>
+              </div>
+              <a href="projects.html">Projects</a>
+              <a href="contact.html">Contact Us</a>
             </nav>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-  </header>
+</header>
 
 
 <!-- slider -->
@@ -69,23 +91,29 @@
 </section>
 
 <section class="about">
-  <div class="container h-100">
-    <div class="col-md-12 about-cont h-100">
+  <div class="bin-about">
+    <video autoplay="" muted="" loop="" playsinline="">
+      <source src="assets/img/bin-about.webm" type="video/mp4">
+    </video>
+  </div>
+  <div class="bin-about-cont">
+    <div class="container h-100">
+      <div class="col-md-12 about-cont h-100">
 
-      <div class="row justify-content-center align-items-center h-100">
-        <div class="col-md-12 col-lg-5">
-          <div class="left-about-cont">
-            <h2>Empowering <br> Infrastructure <br> for Purposeful <br> Living</h2>
-            <button type="button" class="btn">Explore our Verticals</button>
+        <div class="row justify-content-center align-items-center h-100">
+          <div class="col-md-12 col-lg-5">
+            <div class="left-about-cont">
+              <h2>Empowering <br> Infrastructure <br> for Purposeful <br> Living</h2>
+              <button type="button" class="btn"  onclick="location.href='group-of-companies.html'">Explore our Verticals</button>
+            </div>
           </div>
-        </div>
-        <div class="col-md-12 col-lg-7">
-          <div class="right-about-cont">
-            <img src="assets/img/about-img.png" class="img-fluid" alt="binasheer">
+          <div class="col-md-12 col-lg-7">
+            <div class="right-about-cont">
+              <img src="assets/img/about-img.png" class="img-fluid" alt="binasheer">
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -213,7 +241,7 @@
           Established in Abu Dhabi, United Arab Emirates on August 21, 1990 Bin Asheer Transport & General Cont. LLC – OPC is one of the most well-known and reliable businesses in the country. With commitment, discipline and quality of services, the company reached an early milestone in business excellence in 2007. . Ever since the goal has always been to put customer service first and strive toward continuous improvement of offerings while staying a top technological advancement
         </p>
         <div class="button-wrapper">
-          <button class="btn" type="button">Explore Our History</button>
+          <button class="btn" type="button" onclick="location.href='history.html'">Explore Our History</button>
           <div class="button-bg"></div>
         </div>
       </div>
@@ -483,19 +511,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   <section class="footer">
     <div class="container">
       <div class="col-md-12 footer-cont">
@@ -519,33 +534,40 @@
 
             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3 footer-nav-out">
               <div class="footer-nav">
-                <h5>About Us</h5>
+                <h5>Quick Links</h5>
                 <ul>
-                  <li><a href="#">Our History</a></li>
-                  <li><a href="#">Our Founder</a></li>
-                  <li><a href="#">Our Team</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="sector-listing.html">Sectors</a></li>
+                  <li><a href="group-of-companies.html">Group of Companies</a></li>
+                  <li><a href="projects.html">Projects</a></li>
+                  <li><a href="contact.html">Contact Us</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3 footer-nav-out">
               <div class="footer-nav">
-                <h5>Group Business</h5>
+                <h5>Sectors</h5>
                 <ul>
-                  <li><a href="#">Commercial</a></li>
-                  <li><a href="#">Contracting & Services</a></li>
-                  <li><a href="#">Real Estate</a></li>
-                  <li><a href="#">Transportation</a></li>
-                  <li><a href="#">Investment</a></li>
+                  <li><a href="sector-listing.html">Real Estate</a></li>
+                  <li><a href="sector-listing.html">Civilco</a></li>
+                  <li><a href="sector-listing.html">Industries</a></li>
+                  <li><a href="sector-listing.html">Nisco</a></li>
+                  <li><a href="sector-listing.html">Energy</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3 footer-nav-out">
               <div class="footer-nav">
-                <h5>Careers</h5>
+                <h5>Group of Companies</h5>
                 <ul>
-                  <li><a href="#">Grow with us </a></li>
-                  <li><a href="#">Work Culture </a></li>
+                  <li><a href="group-of-companies.html">Transports </a></li>
+                  <li><a href="group-of-companies.html">General Contracting </a></li>
+                  <li><a href="group-of-companies.html">Energy </a></li>
+                  <li><a href="group-of-companies.html">Industries </a></li>
+                  <li><a href="group-of-companies.html">Real Estate </a></li>
+                  <li><a href="group-of-companies.html">Civilco </a></li>
+                  <li><a href="group-of-companies.html">Nisco </a></li>
                 </ul>
               </div>
             </div>
@@ -554,17 +576,15 @@
                 <h5> Get In Touch</h5>
                 <ul>
                   <li>Abu Dhabi-UAE</li>
-                  <li><a href="#"> +971 2 551 0278 </a></li>
-                  <li><a href="#"> (214) 550-5405</a></li>
-                  <li><a href="#"> info@binasheer.ae</a></li>
+                  <li><a href="tel:+97125510278"> +971 2 551 0278 </a></li>
+                  <li><a href="tel:+97125510278"> (214) 550-5405</a></li>
+                  <li><a href="mailto:info@binasheer.ae"> info@binasheer.ae</a></li>
                 </ul>
               </div>
             </div>
 
           </div>
         </div>
-
-          
         </div>
       </div>
 

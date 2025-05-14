@@ -1,3 +1,38 @@
+// // menu dropdown
+// const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+// dropdownToggles.forEach(toggle => {
+//   toggle.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     const parent = toggle.closest('.menu-dropdown');
+//     parent.classList.toggle('open');
+//   });
+// }); 
+
+
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+dropdownToggles.forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    const parent = toggle.closest('.menu-dropdown');
+
+    // Close all other dropdowns
+    document.querySelectorAll('.menu-dropdown').forEach(item => {
+      if (item !== parent) {
+        item.classList.remove('open');
+      }
+    });
+
+    // Toggle the clicked one
+    parent.classList.toggle('open');
+  });
+});
+
+
+
+
 // product-slider
 $('.pfolio .owl-carousel').owlCarousel({
     loop: true,

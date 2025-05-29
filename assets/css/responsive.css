@@ -292,6 +292,14 @@
 		font-size: 25px;
 	}
 
+	.clients .clients-content-item {
+		height: 100px;
+		padding: 15px;
+	}
+	.clients-cont-out {
+		margin-top: 10px;
+	}
+
 }
 
 

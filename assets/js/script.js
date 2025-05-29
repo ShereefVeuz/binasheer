@@ -94,35 +94,43 @@ $('.pfolio .owl-carousel').owlCarousel({
   })
   // close
 
-   // client 
- $('.clients .owl-carousel').owlCarousel({
-  loop: true,
-  margin: 30,
-  nav: false,
-  autoplay: true,
-  autoplayHoverPause: true,
-  responsive: {
-    0: {
-      items: 1
-    },
-    350: {
-      items: 2
-    },
-    780: {
-      items: 3
-    },
-    900: {
-      items: 3
-    },
-    1000: {
-      items: 3
-    },
-    1300: {
-      items: 4
-    }
-  }
-})
+// client 
+//  $('.clients .owl-carousel').owlCarousel({
+//   loop: true,
+//   margin: 30,
+//   nav: false,
+//   autoplay: true,
+//   autoplayHoverPause: true,
+//   responsive: {
+//     0: {
+//       items: 1
+//     },
+//     350: {
+//       items: 2
+//     },
+//     780: {
+//       items: 3
+//     },
+//     900: {
+//       items: 3
+//     },
+//     1000: {
+//       items: 3
+//     },
+//     1300: {
+//       items: 4
+//     }
+//   }
+// })
 // close
+
+
+
+
+// section scrolling animation
+
+
+// END section scrolling
 
 
 

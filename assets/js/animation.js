@@ -549,6 +549,80 @@ window.addEventListener("load", () => {
 
 
 
+// pre loader
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+
+  const innerBars = document.querySelectorAll(".inner-bar");
+  let increment = 0;
+
+  function animateBars() {
+    for (let i = 0; i < 2; i++) {
+      let randomWidth = Math.floor(Math.random() * 101);
+      gsap.to(innerBars[i + increment], {
+        width: `${randomWidth}%`,
+        duration: 0.2,
+        ease: "none",
+      });
+    }
+
+    setTimeout(() => {
+      for (let i = 0; i < 2; i++) {
+        gsap.to(innerBars[i + increment], {
+          width: "100%",
+          duration: 0.2,
+          ease: "none",
+        });
+      }
+
+      increment += 2;
+
+      if (increment < innerBars.length) {
+        animateBars();
+      } else {
+        // After all bars animate
+        const preloaderTl = gsap.timeline();
+        preloaderTl.to(".preloader-overlay", {
+          transform: "translateX(0)",
+          duration: 0.5,
+          delay: 0.4,
+        });
+        preloaderTl.to(".preloader", {
+          display: "none",
+          duration: 0,
+        });
+        preloaderTl.set(".site-main", {
+          display: "block",
+        });
+        preloaderTl.to(".site-main", {
+          opacity: 1,
+          transform: "translateY(0)",
+          duration: 0.6,
+          ease: "power1.out",
+          onComplete: initPageAnimations,
+        });
+      }
+    }, 200);
+  }
+
+  // Example: other GSAP animations
+  function initPageAnimations() {
+    gsap.from(".hero-section h1", {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+    });
+  }
+
+  window.onload = function () {
+    setTimeout(() => {
+      animateBars();
+    }, 1000); // optional delay before loader starts
+  };
+
+// END pre loader
+
 
 // scroller-smooth
 const lenis = new Lenis()

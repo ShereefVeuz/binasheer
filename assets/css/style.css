@@ -30,6 +30,89 @@ a {
 	text-decoration: none !important;
 }
 
+/* loader */
+.preloader {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: #2296ce;
+  overflow: hidden;
+}
+
+.site-name {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.preloader span {
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: var(--second-font) !important;
+}
+
+.preloader-gutters {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  background: transparent;
+}
+
+.preloader-gutters .bar {
+  width: 12.5%;
+  height: 100%;
+  position: relative;
+  background: transparent;
+}
+
+.inner-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #272f56;
+  /* background: linear-gradient(90deg, #2296ce, #185694); */
+}
+
+.preloader-overlay {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  transform: translateX(-100%);
+}
+
+/* Hide main content initially */
+.site-main {
+  display: none;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+
+/* END loader */
+
 .width-container{
     width: 90%;
     max-width: 1500px;
@@ -38,7 +121,6 @@ a {
 
 
 /* navbar */
-
 .main-header {
 	position: absolute;
 	z-index: 9;
@@ -246,21 +328,31 @@ a {
 	font-weight: 600;
 	line-height: 33px;
 	color: white;
-	text-transform: uppercase;
-	/* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+	text-transform: uppercase; 
+	margin-bottom: 0;
 }
 
 .banner_slider .carousel-caption h2 {
 	font-size: 5rem;
-	font-weight: 500;
-	/* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
-	background: linear-gradient(90deg, #0e89bd, #03dbdd);
+	font-weight: 600;
+	text-shadow: 3px 4px 7px rgb(11, 11, 11);
+	/* background: linear-gradient(90deg, #19bbff 40%, #0dfdff); */
+    /* background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent; */
+	text-transform: uppercase;
+	font-family: var(--second-font) !important;
+	-webkit-text-stroke: 1px #ffffff29;
+	color: #125eb6;
+}
+
+/* .banner_slider .carousel-caption h2 span{
+	background: linear-gradient(90deg, #19bbff 40%, #0dfdff);
+	background: linear-gradient(90deg, #19bbff 40%, #0dfdff); 
     background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
-	text-transform: uppercase;
-	font-family: var(--second-font) !important;
-}
+} */
 
 .banner_slider .carousel-caption p {
 	font-size: 16px;
@@ -271,17 +363,60 @@ a {
 	font-family: var(--third-font) !important;
 }
 
-.banner_slider_video:before{
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	position: absolute;
-	content: "";
-	background-color: #000;
-	opacity: 0.5;
-  	z-index: 0;
+.banner_slider_video {
+  position: relative;
 }
+.banner_slider_video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #000928;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+/* Gradient title for "Bin Asheer" */
+/* .title-gradient {
+  background: linear-gradient(90deg, #0e89bd 0%, #03dbdd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+/* Buttons container */
+.company-buttons {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  z-index: 2;
+  position: relative;
+}
+
+.company-buttons img{
+	width: 130px;
+	height: 40px;
+  	object-fit: contain;
+	display: block;
+}
+
+/* Button styling */
+.company-btn {
+  padding: 12px 15px;
+  color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid #aabbcc91;
+  transition: all 0.3s ease;
+}
+.company-btn:hover {
+  background: linear-gradient(90deg, #03dbdd, #0e89bd);
+  transform: translateY(-2px);
+}
+
+
+
+
 
 
 /* ----------------- about ---------------------*/
@@ -733,7 +868,7 @@ a {
 	font-family: var(--third-font) !important;
   }
 
-.clients .carousel-wrap {
+/* .clients .carousel-wrap {
     position: relative;
 	margin-top: 50px;
 }
@@ -743,35 +878,27 @@ a {
     z-index: 100;
     -webkit-backface-visibility: hidden;
 	height: 70px;
+} */
+
+.clients-content{
+	margin-bottom: 20px;
 }
 
-.clients .owl-carousel .item img {
+.clients-cont-out{
+	margin-top: 25px;
+}
+
+.clients .clients-content-item{
+	height: 150px;
+	padding: 30px 50px;
+	box-shadow: rgba(19, 18, 18, 0.11) 0px 4px 12px;
+  	border-radius: 15px;
+}
+
+.clients .clients-content-item img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-}
-
-.clients .owl-nav>div {
-    position: absolute;
-    top: 43%;
-    color: #cdcbcd;
-}
-
-.clients .owl-nav i {
-    font-size: 22px;
-}
-
-.clients .owl-nav .owl-prev {
-    left: -30px;
-}
-
-.clients .owl-nav .owl-next {
-    right: -30px;
-}
-
-.clients .owl-carousel .item:hover .item-content {
-    opacity: 1;
-    transition: 1s all;
 }
 
 /* END clients */
@@ -1613,6 +1740,11 @@ textarea.form-control {
 }
 
 /* right */
+.right-group-lising{
+	background-color: #f4f4f4;
+  	padding: 45px;
+}
+
 .right-group-lising h3{
 	font-size: 25px;
 	font-weight: 500;
@@ -1687,16 +1819,21 @@ textarea.form-control {
 	font-weight: bold;
 	line-height: 40px;
 	color: #272f56;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 	font-family: var(--second-font) !important;
 }
 
 .group-details-content h6{
 	font-size: 14px;
 	font-weight: 300;
-	line-height: 30px;
 	color: #22a7df;
-	margin-bottom: 0;
+	border: 1px solid #22a7df;
+	display: inline-block;
+	padding: 8px 17px;
+	border-radius: 50px;
+	background-color: aliceblue;
+	margin-bottom: 10px;
+	margin-right: 6px;
 }
 
 .group-details-content p{
@@ -1706,9 +1843,100 @@ textarea.form-control {
 	color: #000;
 	margin-bottom: 0;
 	text-align: justify;
-	margin-top: 15px;
+	margin-top: 25px;
 	font-family: var(--third-font) !important;
 }
+
+.companies-associate h3{
+	font-size: 35px;
+	font-weight: 300;
+	line-height: 30px;
+	color: #000;
+}
+
+.companies-asso-in h3{
+	font-size: 25px;
+	font-weight: bold;
+	line-height: 40px;
+	color: #272f56;
+	margin-bottom: 0;
+}
+
+.companies-asso-items{
+	background-color: #1d234a;
+	padding: 20px;
+	border-radius: 12px;
+	margin-top: 20px;
+}
+.companies-asso-items img{
+	height: 60px;
+	width: 100%;
+	object-fit: contain;
+}
+
+.companies-asso{
+	margin-bottom: 60px;
+}
+.companies-asso-in{
+	background-color: aliceblue;
+	padding: 50px;
+	border-radius: 20px;
+}
+
+
+
+
+/*-------------------------------------
+		company details page
+--------------------------------------*/
+/* Desitination */
+
+.gallery-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-auto-rows: minmax(auto, auto);
+	gap: 15px;
+	margin-top: 30px;
+}
+
+.gallery-item {
+	position: relative;
+	overflow: hidden;
+	border-radius: 15px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	transition: transform 0.3s ease;
+	height: 250px;
+}
+
+.gallery-item:hover img{
+	transform: scale(1.2);
+	transition: ease-in-out 1s;
+}
+
+.gallery-item::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.419);
+}
+
+.gallery-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.5s ease;
+}
+
+
 
 
 /*------------------------------------
@@ -1850,3 +2078,58 @@ textarea.form-control {
   }
 
 }
+
+
+/* --------------------------------------
+				career page
+---------------------------------------*/
+.career-out{
+	padding: 100px 0;
+	position: relative;
+	overflow: hidden;
+}
+
+.career-cont{
+	background-color: #f4f4f4;
+  	padding: 20px;
+	margin-bottom: 30px;
+}
+.career-cont-dtls button {
+	font-size: 16px;
+	font-weight: 300;
+	color: #135493;
+	padding: 12px 30px;
+	border: 1px solid #22a7df;
+	border-radius: 6px;
+	margin-top: 25px;
+	font-family: var(--third-font) !important;
+}
+
+.career-cont-dtls button:hover {
+	color: white;
+	border: 1px solid #22a7df;
+	background-color: #22a7df;
+}
+
+.career-cont-dtls p{
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 30px;
+	color: #000;
+	margin-bottom: 0;
+	font-family: var(--third-font) !important;
+	margin-top: 20px;
+}
+
+.career-cont-dtls-btn{
+	text-align: center;
+}
+
+.career-img img{
+	width: 100%;
+	height: 350px;
+	object-fit: cover;
+}
+
+
+

@@ -154,42 +154,42 @@ gsap.from(".pfolio2 .owl-carousel .item", {
 
 
 // about
-gsap.from(".left-about-cont", {
-  duration: 1,
-  x: -100,
-  opacity: 0,
-  stagger: 0.3,
-  scrollTrigger: {
-      trigger: ".left-about-cont",
-      start: "top 90%",
-      end: "bottom 50%",
-      scrub: true,
-      markers: false,
-      toggleActions: "play reverse play reverse",
-  }
-});
-gsap.from(".right-about-cont", {
-  duration: 1,
-  x: 100,
-  opacity: 0,
-  stagger: 0.3,
-  scrollTrigger: {
-      trigger: ".right-about-cont",
-      start: "top 90%",
-      end: "bottom 50%",
-      scrub: true,
-      markers: false,
-      toggleActions: "play reverse play reverse",
-  }
-});
+// gsap.from(".left-about-cont", {
+//   duration: 1,
+//   x: -100,
+//   opacity: 0,
+//   stagger: 0.3,
+//   scrollTrigger: {
+//       trigger: ".left-about-cont",
+//       start: "top 90%",
+//       end: "bottom 50%",
+//       scrub: true,
+//       markers: false,
+//       toggleActions: "play reverse play reverse",
+//   }
+// });
+// gsap.from(".right-about-cont", {
+//   duration: 1,
+//   x: 100,
+//   opacity: 0,
+//   stagger: 0.3,
+//   scrollTrigger: {
+//       trigger: ".right-about-cont",
+//       start: "top 90%",
+//       end: "bottom 50%",
+//       scrub: true,
+//       markers: false,
+//       toggleActions: "play reverse play reverse",
+//   }
+// });
 
-gsap.to(".right-about-cont img", {
-  y: -20,
-  duration: 2,
-  repeat: -1,
-  yoyo: true,
-  ease: "sine.inOut"
-});
+// gsap.to(".right-about-cont img", {
+//   y: -20,
+//   duration: 2,
+//   repeat: -1,
+//   yoyo: true,
+//   ease: "sine.inOut"
+// });
 
 
 // custom-tab
@@ -550,81 +550,109 @@ window.addEventListener("load", () => {
 
 
 // pre loader
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-  };
+  // window.onbeforeunload = function () {
+  //   window.scrollTo(0, 0);
+  // };
 
-  const innerBars = document.querySelectorAll(".inner-bar");
-  let increment = 0;
+  // const innerBars = document.querySelectorAll(".inner-bar");
+  // let increment = 0;
 
-  function animateBars() {
-    for (let i = 0; i < 2; i++) {
-      let randomWidth = Math.floor(Math.random() * 101);
-      gsap.to(innerBars[i + increment], {
-        width: `${randomWidth}%`,
-        duration: 0.2,
-        ease: "none",
-      });
-    }
+  // function animateBars() {
+  //   for (let i = 0; i < 2; i++) {
+  //     let randomWidth = Math.floor(Math.random() * 101);
+  //     gsap.to(innerBars[i + increment], {
+  //       width: `${randomWidth}%`,
+  //       duration: 0.2,
+  //       ease: "none",
+  //     });
+  //   }
 
-    setTimeout(() => {
-      for (let i = 0; i < 2; i++) {
-        gsap.to(innerBars[i + increment], {
-          width: "100%",
-          duration: 0.2,
-          ease: "none",
-        });
-      }
+  //   setTimeout(() => {
+  //     for (let i = 0; i < 2; i++) {
+  //       gsap.to(innerBars[i + increment], {
+  //         width: "100%",
+  //         duration: 0.2,
+  //         ease: "none",
+  //       });
+  //     }
 
-      increment += 2;
+  //     increment += 2;
 
-      if (increment < innerBars.length) {
-        animateBars();
-      } else {
-        // After all bars animate
-        const preloaderTl = gsap.timeline();
-        preloaderTl.to(".preloader-overlay", {
-          transform: "translateX(0)",
-          duration: 0.5,
-          delay: 0.4,
-        });
-        preloaderTl.to(".preloader", {
-          display: "none",
-          duration: 0,
-        });
-        preloaderTl.set(".site-main", {
-          display: "block",
-        });
-        preloaderTl.to(".site-main", {
-          opacity: 1,
-          transform: "translateY(0)",
-          duration: 0.6,
-          ease: "power1.out",
-          onComplete: initPageAnimations,
-        });
-      }
-    }, 200);
-  }
+  //     if (increment < innerBars.length) {
+  //       animateBars();
+  //     } else {
+  //       // After all bars animate
+  //       const preloaderTl = gsap.timeline();
+  //       preloaderTl.to(".preloader-overlay", {
+  //         transform: "translateX(0)",
+  //         duration: 0.5,
+  //         delay: 0.4,
+  //       });
+  //       preloaderTl.to(".preloader", {
+  //         display: "none",
+  //         duration: 0,
+  //       });
+  //       preloaderTl.set(".site-main", {
+  //         display: "block",
+  //       });
+  //       preloaderTl.to(".site-main", {
+  //         opacity: 1,
+  //         transform: "translateY(0)",
+  //         duration: 0.6,
+  //         ease: "power1.out",
+  //         onComplete: initPageAnimations,
+  //       });
+  //     }
+  //   }, 200);
+  // }
 
-  // Example: other GSAP animations
-  function initPageAnimations() {
-    gsap.from(".hero-section h1", {
-      y: 100,
-      opacity: 0,
-      duration: 1,
+  // // Example: other GSAP animations
+  // function initPageAnimations() {
+  //   gsap.from(".hero-section h1", {
+  //     y: 100,
+  //     opacity: 0,
+  //     duration: 1,
+  //   });
+  // }
+
+  // window.onload = function () {
+  //   setTimeout(() => {
+  //     animateBars();
+  //   }, 1000); // optional delay before loader starts
+  // };
+
+
+
+
+
+  // loader
+
+
+  // Add this at the beginning of your script
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    
+    // Hide loader after content loads
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    loader.style.display = 'none';
+                }
+            });
+        }, 2000); // Adjust time as needed
     });
-  }
-
-  window.onload = function () {
-    setTimeout(() => {
-      animateBars();
-    }, 1000); // optional delay before loader starts
-  };
+  });
 
 // END pre loader
 
 
-// scroller-smooth
+ 
+
+
+scroller-smooth
 const lenis = new Lenis()
 lenis.on('scroll', (e) => {
   console.log(e)
@@ -638,3 +666,19 @@ gsap.ticker.add((time)=>{
 gsap.ticker.lagSmoothing(0)
 
 // close
+
+
+// Lenis disabled
+const disableLenisSections = document.querySelectorAll('.sec-outer');
+ 
+disableLenisSections.forEach((section) => {
+  section.addEventListener('wheel', (e) => {
+    lenis.stop();
+   
+    section.scrollTop += e.deltaY;
+   
+    e.preventDefault();
+   
+    setTimeout(() => lenis.start(), 100);
+  }, { passive: false });
+});

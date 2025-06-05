@@ -1,13 +1,77 @@
-// // menu dropdown
-// const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
-// dropdownToggles.forEach(toggle => {
-//   toggle.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     const parent = toggle.closest('.menu-dropdown');
-//     parent.classList.toggle('open');
-//   });
-// }); 
+
+//// mobile header
+const menuButton = document.querySelector('.menu-button');
+const menuOverlay = document.querySelector('.menu-overlay');
+const menuItems = document.querySelectorAll('.menu a');
+const html = document.documentElement;
+const body = document.body;
+ 
+let isOpen = false;
+ 
+// Function to check if it's mobile view
+function isMobileView() {
+  return window.innerWidth <= 992;
+}
+ 
+// Function to open the menu
+function openMenu() {
+  html.classList.add('no-scroll');
+  body.classList.add('no-scroll');
+ 
+  // Slide in menu from right
+  gsap.to(menuOverlay, {
+    duration: 0.5,
+    right: '0%',
+    ease: 'power3.out'
+  });
+ 
+  // Animate menu links
+  gsap.fromTo(menuItems, {
+    opacity: 0,
+    x: 20
+  }, {
+    duration: 0.5,
+    opacity: 1,
+    x: 0,
+    stagger: 0.1,
+    delay: 0.2,
+    ease: 'power3.out'
+  });
+}
+ 
+// Function to close the menu
+function closeMenu() {
+  html.classList.remove('no-scroll');
+  body.classList.remove('no-scroll');
+ 
+  // Animate links out
+  gsap.to(menuItems, {
+    duration: 0.3,
+    opacity: 0,
+    x: 20,
+    stagger: -0.1
+  });
+ 
+  // Slide out menu to the right
+  gsap.to(menuOverlay, {
+    duration: 0.5,
+    right: isMobileView() ? '-100%' : '-50%',
+    delay: 0.3,
+    ease: 'power3.in'
+  });
+}
+ 
+// Toggle menu on button click
+menuButton.addEventListener('click', () => {
+  if (!isOpen) {
+    openMenu();
+  } else {
+    closeMenu();
+  }
+  isOpen = !isOpen;
+  menuButton.classList.toggle('open', isOpen);
+});
 
 
 const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
@@ -29,6 +93,62 @@ dropdownToggles.forEach(toggle => {
     parent.classList.toggle('open');
   });
 });
+
+
+// // menu dropdown
+// const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+// dropdownToggles.forEach(toggle => {
+//   toggle.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     const parent = toggle.closest('.menu-dropdown');
+//     parent.classList.toggle('open');
+//   });
+// }); 
+
+
+// const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+// dropdownToggles.forEach(toggle => {
+//   toggle.addEventListener('click', (e) => {
+//     e.preventDefault();
+    
+//     const parent = toggle.closest('.menu-dropdown');
+
+//     // Close all other dropdowns
+//     document.querySelectorAll('.menu-dropdown').forEach(item => {
+//       if (item !== parent) {
+//         item.classList.remove('open');
+//       }
+//     });
+
+//     // Toggle the clicked one
+//     parent.classList.toggle('open');
+//   });
+// });
+
+
+// // menu mouse hover show 
+// const dropdowns = document.querySelectorAll('.menu-dropdown');
+// dropdowns.forEach(dropdown => {
+//   const toggle = dropdown.querySelector('.dropdown-toggle');
+
+//   dropdown.addEventListener('mouseenter', () => {
+//     // Close all other dropdowns
+//     dropdowns.forEach(d => {
+//       if (d !== dropdown) {
+//         d.classList.remove('open');
+//       }
+//     });
+//     // Open current
+//     dropdown.classList.add('open');
+//   });
+
+//   dropdown.addEventListener('mouseleave', () => {
+//     dropdown.classList.remove('open');
+//   });
+// });
+
 
 
 
@@ -135,319 +255,141 @@ $('.pfolio .owl-carousel').owlCarousel({
 
 
 /*---returnTop-----*/
-window.onscroll = function() {
-  const topButton = document.getElementById("topButton");
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    topButton.style.display = "block";
-  } else {
-    topButton.style.display = "none";
-  }
-};
+// window.onscroll = function() {
+//   const topButton = document.getElementById("topButton");
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     topButton.style.display = "block";
+//   } else {
+//     topButton.style.display = "none";
+//   }
+// };
 
-// Function to scroll to the top
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-
+// // Function to scroll to the top
+// function scrollToTop() {
+//   window.scrollTo({ top: 0, behavior: 'smooth' });
+// }
 
 
+// Function to start counting
+let count = document.querySelectorAll(".count")
+      let arr = Array.from(count)
+      arr.map(function(item){
+        let startnumber = 0
 
+        function counterup(){
+        startnumber++
+        item.innerHTML= startnumber
+        
+        if(startnumber == item.dataset.number){
+            clearInterval(stop)
+        }
+      }
 
+      let stop =setInterval(function(){
+        counterup()
+      },10)
 
+      })
+      
+// function startCounting() {
+//   let counter = document.querySelectorAll(".counter");
+//   let arr = Array.from(counter);
 
-
-
-
-
-
-// const sections = document.querySelectorAll(".section");
-//   let currentIndex = 0;
-//   let isAnimating = false;
-
-//   function goToSection(index) {
-//     if (isAnimating || index < 0 || index >= sections.length) return;
-//     isAnimating = true;
-
-//     gsap.to(".sections-container", {
-//       y: `-${index * 100}vh`,
-//       duration: 1,
-//       ease: "power2.inOut",
-//       onComplete: () => {
-//         isAnimating = false;
-//         currentIndex = index;
+//   arr.map((item) => {
+//     let count = 0;
+//     function CounterUp() {
+//       count++;
+//       item.innerHTML = count;
+//       if (count == item.dataset.number) {
+//         clearInterval(stop);
 //       }
-//     });
-//   }
-
-//   // Mouse wheel navigation
-//   window.addEventListener("wheel", (e) => {
-//     if (e.deltaY > 0) {
-//       goToSection(currentIndex + 1);
-//     } else {
-//       goToSection(currentIndex - 1);
 //     }
-//   });
-
-//   // Optional: Allow arrow key navigation
-//   window.addEventListener("keydown", (e) => {
-//     if (e.key === "ArrowDown") {
-//       goToSection(currentIndex + 1);
-//     } else if (e.key === "ArrowUp") {
-//       goToSection(currentIndex - 1);
-//     }
-//   });
-
-
-
-//   let currentSection = 0;
-// const totalSections = 2;
-
-// window.addEventListener('wheel', (e) => {
-//   e.preventDefault();
-//   if (e.deltaY > 0 && currentSection < totalSections - 1) {
-//     currentSection++;
-//   } else if (e.deltaY < 0 && currentSection > 0) {
-//     currentSection--;
-//   }
-//   document.querySelector('.sections-container').scrollTo({
-//     top: currentSection * window.innerHeight,
-//     behavior: 'smooth'
-//   });
-// }, { passive: false });
-
-
-
-
-
-
-
-
-// const sections = document.querySelectorAll(".section");
-// const sectionsContainer = document.querySelector(".sections-container");
-// let currentIndex = 0;
-// let isAnimating = false;
-
-// // Elements that should allow normal scrolling
-// const scrollableElements = document.querySelectorAll('.normal-content, .pfolio, .inner-all-outer, .custom-tab, .clients, .future, .solution');
-
-// function goToSection(index) {
-//   if (isAnimating || index < 0 || index >= sections.length) return;
-  
-//   isAnimating = true;
-//   currentIndex = index;
-
-//   gsap.to(sectionsContainer, {
-//     y: `-${index * 100}vh`,
-//     duration: 1,
-//     ease: "power2.inOut",
-//     onComplete: () => {
-//       isAnimating = false;
-//     }
+//     let stop = setInterval(function () {
+//       CounterUp();
+//     }, 100 / item.dataset.speed);
 //   });
 // }
-
-// // Check if element or its parents should allow normal scrolling
-// function shouldAllowScroll(target) {
-//   return Array.from(scrollableElements).some(el => 
-//     el.contains(target) || target === el
-//   );
-// }
-
-// // Mouse wheel navigation
-// window.addEventListener("wheel", (e) => {
-//   // Check if we're inside a scrollable area
-//   if (shouldAllowScroll(e.target)) {
-//     return; // Allow normal scrolling
-//   }
-
-//   // Prevent default only for section navigation
-//   e.preventDefault();
-  
-//   if (e.deltaY > 0) {
-//     goToSection(currentIndex + 1);
-//   } else if (e.deltaY < 0) {
-//     goToSection(currentIndex - 1);
-//   }
-// }, { passive: false });
-
-// // Arrow key navigation
-// window.addEventListener("keydown", (e) => {
-//   // Don't prevent default if we're in a content area
-//   if (shouldAllowScroll(document.activeElement)) {
-//     return;
-//   }
-
-//   if (e.key === "ArrowDown") {
-//     goToSection(currentIndex + 1);
-//     e.preventDefault();
-//   } else if (e.key === "ArrowUp") {
-//     goToSection(currentIndex - 1);
-//     e.preventDefault();
-//   }
-// });
+// close
 
 
+
+
+
+// section wrapping
 
 // $(document).ready(function() {
-//   var delay = false;
-//   var currentPage = 1;
-//   var pageCount = $(".section").length;
-//   var swipe = document.getElementsByTagName('.section');
+//   // Initialize Lenis smooth scroll
+//   const lenis = new Lenis({
+//     lerp: 0.1,
+//     smooth: true,
+//     direction: 'vertical'
+//   });
 
-//   $(document).on('mousewheel DOMMouseScroll', function(event) {
-//         event.preventDefault();
-//         if (delay) return;
-//         delay = true;
-//         setTimeout(function() { delay = false }, 100)
+//   // Get all sections
+//   const sections = $('.section');
+//   const sectionCount = sections.length;
+//   let currentSection = 0;
 
-//         var wd = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-//         console.log(wd);
-
-//         if (wd < 0) {
-//             if (currentPage < pageCount) {
-//                 currentPage++;
-//             }
-//         } else {
-//             if (1 < currentPage) {
-//                 currentPage--;
-//             }
-//         }
+//   // Function to snap to a specific section
+//   function goToSection(index) {
+//     if (index < 0 || index >= sectionCount) return;
     
-//         $('html,body').animate({
-//             scrollTop: $('#sec' + currentPage).offset().top
-//         }, 700);
-
-//         $('#tag' + currentPage).addClass('active');
-//         for (var i = 1; i <= pageCount; i++) {
-//             if (i != currentPage) {
-//                 $('#tag' + i).removeClass('active');
-//             }
-//         }
+//     currentSection = index;
+//     const target = sections.eq(index)[0];
+//     lenis.scrollTo(target, {
+//       duration: 1.2,
+//       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // smooth easing
 //     });
-// }); 
+//   }
 
-
-// $(document).ready(function () {
-//   let delay = false;
-//   let currentPage = 1;
-//   const $sections = $(".section");
-//   const pageCount = $sections.length;
-
-//   $(document).on("mousewheel DOMMouseScroll", function (event) {
-//     const wd = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-
-//     if (delay) return;
-
-//     if (currentPage < pageCount || (currentPage === pageCount && wd > 0)) {
-//       event.preventDefault();
-//     }
-
-//     delay = true;
-//     setTimeout(function () {
-//       delay = false;
-//     }, 100);
-
-//     if (wd < 0) {
-//       // scroll down
-//       if (currentPage < pageCount) {
-//         currentPage++;
-//         $("html,body").stop().animate(
-//           {
-//             scrollTop: $("#sec" + currentPage).offset().top,
-//           },
-//           700
-//         );
-//       }
+//   // Handle wheel events for section navigation
+//   $(window).on('wheel', function(e) {
+//     e.preventDefault();
+    
+//     if (e.originalEvent.deltaY > 0) {
+//       // Scroll down - next section
+//       goToSection(currentSection + 1);
 //     } else {
-//       // scroll up
-//       if (currentPage > 1) {
-//         currentPage--;
-//         $("html,body").stop().animate(
-//           {
-//             scrollTop: $("#sec" + currentPage).offset().top,
-//           },
-//           700
-//         );
-//       }
+//       // Scroll up - previous section
+//       goToSection(currentSection - 1);
 //     }
 //   });
-// });
 
+//   // Handle keyboard navigation
+//   $(document).on('keydown', function(e) {
+//     switch(e.which) {
+//       case 38: // Up arrow
+//         goToSection(currentSection - 1);
+//         e.preventDefault();
+//         break;
+//       case 40: // Down arrow
+//         goToSection(currentSection + 1);
+//         e.preventDefault();
+//         break;
+//     }
+//   });
 
-$(document).ready(function() {
-  // Initialize Lenis smooth scroll
-  const lenis = new Lenis({
-    lerp: 0.1,
-    smooth: true,
-    direction: 'vertical'
-  });
+//   // Update Lenis on each frame
+//   function raf(time) {
+//     lenis.raf(time);
+//     requestAnimationFrame(raf);
+//   }
+//   requestAnimationFrame(raf);
 
-  // Get all sections
-  const sections = $('.section');
-  const sectionCount = sections.length;
-  let currentSection = 0;
-
-  // Function to snap to a specific section
-  function goToSection(index) {
-    if (index < 0 || index >= sectionCount) return;
-    
-    currentSection = index;
-    const target = sections.eq(index)[0];
-    lenis.scrollTo(target, {
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // smooth easing
-    });
-  }
-
-  // Handle wheel events for section navigation
-  $(window).on('wheel', function(e) {
-    e.preventDefault();
-    
-    if (e.originalEvent.deltaY > 0) {
-      // Scroll down - next section
-      goToSection(currentSection + 1);
-    } else {
-      // Scroll up - previous section
-      goToSection(currentSection - 1);
-    }
-  });
-
-  // Handle keyboard navigation
-  $(document).on('keydown', function(e) {
-    switch(e.which) {
-      case 38: // Up arrow
-        goToSection(currentSection - 1);
-        e.preventDefault();
-        break;
-      case 40: // Down arrow
-        goToSection(currentSection + 1);
-        e.preventDefault();
-        break;
-    }
-  });
-
-  // Update Lenis on each frame
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-
-  // Update current section on scroll
-  lenis.on('scroll', ({ scroll, limit }) => {
-    const scrollPosition = scroll;
-    sections.each(function(index) {
-      const section = $(this);
-      const sectionTop = section.offset().top;
-      const sectionHeight = section.outerHeight();
+//   // Update current section on scroll
+//   lenis.on('scroll', ({ scroll, limit }) => {
+//     const scrollPosition = scroll;
+//     sections.each(function(index) {
+//       const section = $(this);
+//       const sectionTop = section.offset().top;
+//       const sectionHeight = section.outerHeight();
       
-      if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight - 100) {
-        currentSection = index;
-      }
-    });
-  });
-});
+//       if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionTop + sectionHeight - 100) {
+//         currentSection = index;
+//       }
+//     });
+//   });
+// });
 
 
 

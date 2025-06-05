@@ -270,7 +270,7 @@ a {
 	/* border-top-left-radius: 50%;
 	border-bottom-left-radius: 50%; */
 	display: flex;
-	align-items: center;
+	/* align-items: center; */
 	/* justify-content: center; */
 	padding-left: 4%;
 	z-index: 2;
@@ -282,6 +282,7 @@ a {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
+	margin-top: 20%;
 }
 .menu a {
 	color: #fff;
@@ -373,12 +374,22 @@ a {
 	
 }
 
+.panel {
+    width: 100%;
+    height: 100vh;
+	min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 .slider-banner{
 	background-color: #1f2154; 
 }
 
 .banner_slider video{
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
 	max-height: 100vh;
 	object-fit: cover;
@@ -415,24 +426,13 @@ a {
 .banner_slider .carousel-caption h2 {
 	font-size: 5rem;
 	font-weight: 600;
-	text-shadow: 3px 4px 7px rgb(11, 11, 11);
-	/* background: linear-gradient(90deg, #19bbff 40%, #0dfdff); */
-    /* background-clip: border-box;
-	-webkit-background-clip: text;
-	color: transparent; */
-	text-transform: uppercase;
-	font-family: var(--second-font) !important;
-	-webkit-text-stroke: 1px #ffffff29;
-	color: #125eb6;
-}
-
-/* .banner_slider .carousel-caption h2 span{
-	background: linear-gradient(90deg, #19bbff 40%, #0dfdff);
-	background: linear-gradient(90deg, #19bbff 40%, #0dfdff); 
+	background: linear-gradient(90deg, #0897d2 30%, #02c4c6 100%);
     background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
-} */
+	text-transform: uppercase;
+	font-family: var(--second-font) !important;
+}
 
 .banner_slider .carousel-caption p {
 	font-size: 16px;
@@ -455,22 +455,16 @@ a {
   z-index: 0;
 }
 
-/* Gradient title for "Bin Asheer" */
-/* .title-gradient {
-  background: linear-gradient(90deg, #0e89bd 0%, #03dbdd 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
-
 /* Buttons container */
 .company-buttons {
-  margin-top: 35px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 6%;
   flex-wrap: wrap;
   z-index: 2;
-  position: relative;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
 }
 
 .company-buttons img{
@@ -482,12 +476,13 @@ a {
 
 /* Button styling */
 .company-btn {
-  padding: 12px 15px;
+  padding: 12px 30px;
   color: #fff;
   border-radius: 10px;
   transition: all 0.3s ease;
   border: 1px solid #aabbcc91;
   transition: all 0.3s ease;
+  margin-bottom: 15px;
 }
 .company-btn:hover {
   background: linear-gradient(90deg, #03dbdd, #0e89bd);
@@ -495,15 +490,11 @@ a {
 }
 
 
-
-
-
-
 /* ----------------- about ---------------------*/
 .about {
 	background-color: #1f2154; 
-	padding: 120px 0;
-	margin-top: -8px;
+	/* padding: 120px 0; */
+	/* margin-top: -8px; */
 }
 
 .bin-about video{
@@ -557,14 +548,20 @@ a {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-	filter: drop-shadow(0px 50px 15px #0e0e0f8a);
+	position: relative;
+	/* filter: drop-shadow(0px 50px 15px #0e0e0f8a); */
+	animation: floatY 2s ease-in-out infinite alternate;
+}
+@keyframes floatY {
+  0%   { top: 0; }
+  100% { top: -20px; }
 }
 
 
 /* ----------- start verticals ----------------*/
 .pfolio {
     position: relative;
-    margin: 100px 0 30px;
+    padding: 100px 0 30px;
 }
 
 .pfolio h2 {
@@ -807,6 +804,7 @@ a {
     background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
+	text-align: center;
 	font-family: var(--second-font) !important;
 }
 
@@ -893,6 +891,22 @@ a {
 }
 .nav-tabs .nav-link.active .custom-tab-icon{
 	filter: brightness(0) invert(1);
+}
+
+.dropdown-menu button {
+	font-size: 16px;
+	font-weight: 300;
+	color: white;
+	padding: 12px 30px;
+	border: 1px solid #22a7df;
+	border-radius: 6px;
+	margin-top: 5px;
+}
+
+.dropdown-menu button:hover {
+	color: white;
+	border: 1px solid #22a7df;
+	background-color: #22a7df;
 }
 
 .custom-tab-icon {
@@ -1232,7 +1246,7 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	background-color: #272f6e;
 }
 
@@ -1268,6 +1282,9 @@ a {
 	font-weight: 400;
 	font-size: 14px;
 	color: #fff;
+}
+.banner-2 span a:hover{
+	color: #22a7df;
 }
 
 .abt-page-out{
@@ -1958,10 +1975,6 @@ textarea.form-control {
 	width: 100%;
 	object-fit: contain;
 }
-
-.companies-asso{
-	margin-bottom: 60px;
-}
 .companies-asso-in{
 	background-color: aliceblue;
 	padding: 50px;
@@ -2566,127 +2579,13 @@ input:-ms-input-placeholder {
 }
 
 
-/* html, body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-}
-
-.sections-container {
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.section {
-  height: 100vh;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.slider-banner {
-  z-index: 2;
-}
-
-.about {
-  z-index: 1;
-} */
 
 
 
 
 
-/* html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden; 
-}
 
-.sections-container {
-  height: 200vh; 
-  scroll-behavior: smooth;
-}
+    
 
-section {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-} */
-
-
-
-
-
- /* html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.sections-container {
-  height: 100vh; 
-  scroll-behavior: smooth;
-  position: relative;
-  z-index: 8;
-}
-
-.section {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.about {
-	height: 110vh;
-}
-.bin-about-cont {
-  height: 100vh;
-} */
-
-
-
-.section{
-  width: 100%;
-  height: 100vh;
-  /* display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center; */
-}
-
-/* p{
-  font-size: 200%;
-  font-family: monospace;
-  font-weight: bold;
-} */
-
-/* #sec1{
-  background-color: rgb(255, 153, 153); 
-}
-
-#sec2{
-  background-color: rgb(153, 204, 255); 
-}
-
-#sec3{
-  background-color: rgb(255, 153, 102); 
-} */
-
-/* .slider-banner {
-  min-height: 100vh;
-  overflow: hidden;
-  position: relative;
-} */
 
 

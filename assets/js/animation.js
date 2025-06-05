@@ -39,77 +39,27 @@
 
 
 
-const menuButton = document.querySelector('.menu-button');
-const menuOverlay = document.querySelector('.menu-overlay');
-const menuItems = document.querySelectorAll('.menu a');
-const html = document.documentElement;
-const body = document.body;
-
-let isOpen = false;
-
-// Function to check if it's mobile view
-function isMobileView() {
-  return window.innerWidth <= 992;
-}
-
-// Function to open the menu
-function openMenu() {
-  html.classList.add('no-scroll');
-  body.classList.add('no-scroll');
-
-  // Slide in menu from right
-  gsap.to(menuOverlay, {
-    duration: 0.5,
-    right: '0%',
-    ease: 'power3.out'
+ //// loader
+  document.addEventListener('DOMContentLoaded', function() {
+    const loader = document.querySelector('.loader');
+    
+    // Hide loader after content loads
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            gsap.to(loader, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    loader.style.display = 'none';
+                }
+            });
+        }, 2000); // Adjust time as needed
+    });
   });
 
-  // Animate menu links
-  gsap.fromTo(menuItems,
-    { opacity: 0, x: 20 },
-    {
-      duration: 0.5,
-      opacity: 1,
-      x: 0,
-      stagger: 0.1,
-      delay: 0.2,
-      ease: 'power3.out'
-    }
-  );
-}
+// END pre loader
 
-// Function to close the menu
-function closeMenu() {
-  html.classList.remove('no-scroll');
-  body.classList.remove('no-scroll');
 
-  // Animate links out
-  gsap.to(menuItems, {
-    duration: 0.3,
-    opacity: 0,
-    x: 20,
-    stagger: -0.1
-  });
-
-  // Slide out menu to the right
-  gsap.to(menuOverlay, {
-    duration: 0.5,
-    right: isMobileView() ? '-100%' : '-50%',
-    delay: 0.3,
-    ease: 'power3.in'
-  });
-}
-
-// Toggle menu on button click
-menuButton.addEventListener('click', () => {
-  if (!isOpen) {
-    openMenu();
-  } else {
-    closeMenu();
-  }
-  isOpen = !isOpen;
-  menuButton.classList.toggle('open', isOpen);
-});
 
 
 
@@ -120,37 +70,37 @@ menuButton.addEventListener('click', () => {
 
 
 //Animations
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
-gsap.from(".pfolio .owl-carousel .item", {
-  duration: 200,
-  x: 100,
-  opacity:0,
-  stagger: 50,
-  scrollTrigger: {
-    trigger: ".pfolio .owl-carousel .item",
-    start: "top 130%",
-    end:"center 50%",
-    scrub: true, 
-    markers: false,
-    toggleActions: "play reverse play reverse",
-  },
-});
+// gsap.from(".pfolio .owl-carousel .item", {
+//   duration: 200,
+//   x: 100,
+//   opacity:0,
+//   stagger: 50,
+//   scrollTrigger: {
+//     trigger: ".pfolio .owl-carousel .item",
+//     start: "top 130%",
+//     end:"center 50%",
+//     scrub: true, 
+//     markers: false,
+//     toggleActions: "play reverse play reverse",
+//   },
+// });
 
-gsap.from(".pfolio2 .owl-carousel .item", {
-  duration: 200,
-  x: -100,
-  opacity:0,
-  stagger: 50,
-  scrollTrigger: {
-    trigger: ".pfolio2 .owl-carousel .item",
-    start: "top 130%",
-    end:"center 50%",
-    scrub: true, 
-    markers: false,
-    toggleActions: "play none none reverse",
-  },
-});
+// gsap.from(".pfolio2 .owl-carousel .item", {
+//   duration: 200,
+//   x: -100,
+//   opacity:0,
+//   stagger: 50,
+//   scrollTrigger: {
+//     trigger: ".pfolio2 .owl-carousel .item",
+//     start: "top 130%",
+//     end:"center 50%",
+//     scrub: true, 
+//     markers: false,
+//     toggleActions: "play none none reverse",
+//   },
+// });
 
 
 // about
@@ -294,24 +244,24 @@ gsap.from(".counter-outr .container", {
 });
 
 // Function to start counting
-function startCounting() {
-  let counter = document.querySelectorAll(".counter");
-  let arr = Array.from(counter);
+// function startCounting() {
+//   let counter = document.querySelectorAll(".counter");
+//   let arr = Array.from(counter);
 
-  arr.map((item) => {
-    let count = 0;
-    function CounterUp() {
-      count++;
-      item.innerHTML = count;
-      if (count == item.dataset.number) {
-        clearInterval(stop);
-      }
-    }
-    let stop = setInterval(function () {
-      CounterUp();
-    }, 100 / item.dataset.speed);
-  });
-}
+//   arr.map((item) => {
+//     let count = 0;
+//     function CounterUp() {
+//       count++;
+//       item.innerHTML = count;
+//       if (count == item.dataset.number) {
+//         clearInterval(stop);
+//       }
+//     }
+//     let stop = setInterval(function () {
+//       CounterUp();
+//     }, 200 / item.dataset.speed);
+//   });
+// }
 // close
 
 
@@ -548,111 +498,7 @@ window.addEventListener("load", () => {
 
 
 
-
-// pre loader
-  // window.onbeforeunload = function () {
-  //   window.scrollTo(0, 0);
-  // };
-
-  // const innerBars = document.querySelectorAll(".inner-bar");
-  // let increment = 0;
-
-  // function animateBars() {
-  //   for (let i = 0; i < 2; i++) {
-  //     let randomWidth = Math.floor(Math.random() * 101);
-  //     gsap.to(innerBars[i + increment], {
-  //       width: `${randomWidth}%`,
-  //       duration: 0.2,
-  //       ease: "none",
-  //     });
-  //   }
-
-  //   setTimeout(() => {
-  //     for (let i = 0; i < 2; i++) {
-  //       gsap.to(innerBars[i + increment], {
-  //         width: "100%",
-  //         duration: 0.2,
-  //         ease: "none",
-  //       });
-  //     }
-
-  //     increment += 2;
-
-  //     if (increment < innerBars.length) {
-  //       animateBars();
-  //     } else {
-  //       // After all bars animate
-  //       const preloaderTl = gsap.timeline();
-  //       preloaderTl.to(".preloader-overlay", {
-  //         transform: "translateX(0)",
-  //         duration: 0.5,
-  //         delay: 0.4,
-  //       });
-  //       preloaderTl.to(".preloader", {
-  //         display: "none",
-  //         duration: 0,
-  //       });
-  //       preloaderTl.set(".site-main", {
-  //         display: "block",
-  //       });
-  //       preloaderTl.to(".site-main", {
-  //         opacity: 1,
-  //         transform: "translateY(0)",
-  //         duration: 0.6,
-  //         ease: "power1.out",
-  //         onComplete: initPageAnimations,
-  //       });
-  //     }
-  //   }, 200);
-  // }
-
-  // // Example: other GSAP animations
-  // function initPageAnimations() {
-  //   gsap.from(".hero-section h1", {
-  //     y: 100,
-  //     opacity: 0,
-  //     duration: 1,
-  //   });
-  // }
-
-  // window.onload = function () {
-  //   setTimeout(() => {
-  //     animateBars();
-  //   }, 1000); // optional delay before loader starts
-  // };
-
-
-
-
-
-  // loader
-
-
-  // Add this at the beginning of your script
-  document.addEventListener('DOMContentLoaded', function() {
-    const loader = document.querySelector('.loader');
-    
-    // Hide loader after content loads
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            gsap.to(loader, {
-                opacity: 0,
-                duration: 0.5,
-                onComplete: () => {
-                    loader.style.display = 'none';
-                }
-            });
-        }, 2000); // Adjust time as needed
-    });
-  });
-
-// END pre loader
-
-
- 
-
-
-scroller-smooth
+//scroller-smooth
 const lenis = new Lenis()
 lenis.on('scroll', (e) => {
   console.log(e)
@@ -668,17 +514,18 @@ gsap.ticker.lagSmoothing(0)
 // close
 
 
-// Lenis disabled
-const disableLenisSections = document.querySelectorAll('.sec-outer');
- 
-disableLenisSections.forEach((section) => {
-  section.addEventListener('wheel', (e) => {
-    lenis.stop();
+// // Lenis disabled
+// const disableLenisSections = document.querySelectorAll('sec3');
+// disableLenisSections.forEach((section) => {
+//   section.addEventListener('wheel', (e) => {
+//     lenis.stop();
    
-    section.scrollTop += e.deltaY;
+//     section.scrollTop += e.deltaY;
    
-    e.preventDefault();
+//     e.preventDefault();
    
-    setTimeout(() => lenis.start(), 100);
-  }, { passive: false });
-});
+//     setTimeout(() => lenis.start(), 100);
+//   }, { passive: false });
+// });
+
+
